@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
-import { getSmurfsData } from '../store/actions';
+import { getSmurfsData, deleteSmurf } from '../store/actions';
 import Smurf from './Smurf';
 
 const SmurfList = props => {
@@ -34,7 +34,11 @@ const SmurfList = props => {
             {props.error
                 ?   <h3>{props.error}</h3>
                 :   props.smurfs.map(smurf => {
-                    return <Smurf smurf={smurf} key={smurf.id} />
+                    return <Smurf
+                        smurf={smurf}
+                        key={smurf.id}
+                        deleteSmurf={props.deleteSmurf}
+                    />
                     })
             }
         </div>
@@ -52,5 +56,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getSmurfsData }
+    { getSmurfsData, deleteSmurf }
 )(SmurfList);
