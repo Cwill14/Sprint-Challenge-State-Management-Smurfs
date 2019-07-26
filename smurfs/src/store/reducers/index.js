@@ -1,7 +1,7 @@
 export const initialState = {
-    gettingSmurf: false,
+    gettingSmurfs: false,
     error: "",
-    smurf: ""
+    smurfs: []
 }
 
 export const reducer = (state = initialState, action) => {
