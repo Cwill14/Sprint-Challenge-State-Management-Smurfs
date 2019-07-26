@@ -41,6 +41,14 @@ const SmurfList = props => {
                     />
                     })
             }
+
+            {/* {props.smurfs.map(smurf => {
+                return <Smurf
+                    smurf={smurf}
+                    key={smurf.id}
+                    deleteSmurf={props.deleteSmurf}
+                />
+            })} */}
         </div>
     );
 };
@@ -56,5 +64,8 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getSmurfsData, deleteSmurf }
+    { 
+        getSmurfsData, 
+        deleteSmurf 
+    }
 )(SmurfList);
