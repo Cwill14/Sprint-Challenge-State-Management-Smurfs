@@ -13,7 +13,7 @@ const SmurfList = props => {
     }
     
     // useEffect(()=>{
-    //     getSmurfsData()
+    //     props.getSmurfsData()
     // }, [props.smurfs])
 
     return (
