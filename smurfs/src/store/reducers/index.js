@@ -1,11 +1,15 @@
 import {
     GET_SMURFS_START,
     GET_SMURFS_SUCCESS,
-    GET_SMURFS_FAILURE
+    GET_SMURFS_FAILURE,
+    POST_SMURF_START,
+    POST_SMURF_SUCCESS,
+    POST_SMURF_FAILURE
 } from '../actions';
 
 export const initialState = {
     gettingSmurfs: false,
+    addingSmurf: false,
     error: "",
     smurfs: []
 }
@@ -32,6 +36,25 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 gettingSmurfs: false,
+                error: action.payload
+            }
+        case POST_SMURF_START:
+            return {
+                ...state,
+                addingSmurf: true,
+                error: "",
+            }
+        case POST_SMURF_SUCCESS:
+            return {
+                ...state,
+                addingSmurf: false,
+                error: "",
+                smurfs: [...state.smurfs, action.payload]
+            }
+        case POST_SMURF_FAILURE:
+            return {
+                ...state,
+                addingSmurf: false,
                 error: action.payload
             }
     }

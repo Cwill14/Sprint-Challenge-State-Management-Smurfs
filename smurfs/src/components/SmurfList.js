@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
@@ -12,6 +12,10 @@ const SmurfList = props => {
         props.getSmurfsData();
     }
     
+    // useEffect(()=>{
+    //     getSmurfsData()
+    // }, [props.smurfs])
+
     return (
         <div>
             {props.gettingSmurfs
@@ -27,9 +31,12 @@ const SmurfList = props => {
                     </button>
                   </div>
             }
-            {props.smurfs.map(smurf => {
-                return <Smurf smurf={smurf} key={smurf.id} />
-            })}
+            {props.error
+                ?   <h3>{props.error}</h3>
+                :   props.smurfs.map(smurf => {
+                    return <Smurf smurf={smurf} key={smurf.id} />
+                    })
+            }
         </div>
     );
 };
